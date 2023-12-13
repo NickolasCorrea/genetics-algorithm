@@ -29,16 +29,6 @@ public class Frame extends javax.swing.JFrame {
 
         //Adiciona as funções no menu
         funcaoComboBox.addItem(new Funcoes(1, -100, 100, 1500));
-        funcaoComboBox.addItem(new Funcoes(2, -10, 10, 2000));
-        funcaoComboBox.addItem(new Funcoes(3, -100, 100, 5000));
-        funcaoComboBox.addItem(new Funcoes(4, -100, 100, 5000));
-        funcaoComboBox.addItem(new Funcoes(5, -30, 30, 20000));
-        funcaoComboBox.addItem(new Funcoes(6, -100, 100, 1500));
-        funcaoComboBox.addItem(new Funcoes(7, -1.28, 1.28, 3000));
-        funcaoComboBox.addItem(new Funcoes(8, -500, 500, 9000));
-        funcaoComboBox.addItem(new Funcoes(9, -5.12, 5.12, 5000));
-        funcaoComboBox.addItem(new Funcoes(10, -32, 32, 1500));
-        funcaoComboBox.addItem(new Funcoes(11, -600, 600, 2000));
     }
 
     @SuppressWarnings("unchecked")
