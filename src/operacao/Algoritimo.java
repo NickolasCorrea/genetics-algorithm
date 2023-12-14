@@ -17,7 +17,7 @@ public class Algoritimo {
     private static double taxaDeMutacao;
     private static Funcoes funcao;
     private static Populacao populacaoAtual;
-    public static int N = 30;
+    public static int N = 20;
 
     public static Populacao novaGeracao(Populacao populacao, int geracao, boolean elitismo) {
         Random r;

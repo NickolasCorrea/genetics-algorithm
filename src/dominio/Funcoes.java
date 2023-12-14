@@ -40,6 +40,9 @@ public class Funcoes {
             case 1:
                 resultado = f1(x);
                 break;
+            case 89:
+                resultado = f89(x);
+                break;
         }
         return resultado;
     }
@@ -51,6 +54,37 @@ public class Funcoes {
             resultado += Math.pow(x[i], 2);
         }
 
+        return resultado;
+
+    }
+
+    private double f89(double x[]) {
+        double sum1 = 0.0;
+        double sum2 = 0.0;
+        double sum3 = 0.0;
+        double resultado = 0;
+
+        int D = x.length;
+
+        // Tratando as condições de contorno
+        double x0 = x[D - 1]; // x0 = xD
+        double xDplus1 = x[0]; // xD+1 = x1
+
+        for (int i = 0; i < D; i++) {
+            // Calculando A e B com condições de contorno
+            double xi = x[i];
+            double xiMinus1 = (i == 0) ? x0 : x[i - 1];
+            double xiPlus1 = (i == D - 1) ? xDplus1 : x[i + 1];
+
+            double A = (xiMinus1 * Math.sin(xi) + Math.sin(xiPlus1));
+            double B = Math.pow(xiMinus1, 2) - 2 * xi + 3 * xiPlus1 - Math.cos(xi) + 1;
+
+            sum1 += i * Math.pow(xi, 2);
+            sum2 += 20 * Math.sin(A) * Math.sin(A);
+            sum3 += Math.log10(1 + (i + 1) * Math.pow(B, 2));
+        }
+
+        resultado = sum1 + sum2 + sum3;
         return resultado;
     }
 
