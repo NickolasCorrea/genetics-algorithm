@@ -28,7 +28,6 @@ public class Frame extends javax.swing.JFrame {
         jTabbedPane.setTitleAt(1, "Grafico de Convergência");
 
         //Adiciona as funções no menu
-        funcaoComboBox.addItem(new Funcoes(1, -100, 100, 1500));
         funcaoComboBox.addItem(new Funcoes(89, -100, 100, 1500));
     }
 

@@ -37,25 +37,11 @@ public class Funcoes {
     public double resolve(double x[]) {
         double resultado = 0;
         switch (numFuncao) {
-            case 1:
-                resultado = f1(x);
-                break;
             case 89:
                 resultado = f89(x);
                 break;
         }
         return resultado;
-    }
-
-    private double f1(double x[]) {
-        double resultado = 0;
-
-        for (int i = 0; i < x.length; i++) {
-            resultado += Math.pow(x[i], 2);
-        }
-
-        return resultado;
-
     }
 
     private double f89(double x[]) {
