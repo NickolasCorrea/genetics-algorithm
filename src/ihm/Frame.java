@@ -1,6 +1,7 @@
 package ihm;
 
 import operacao.Algoritimo;
+import dominio.ComboItem;
 import dominio.Funcoes;
 import dominio.Individuo;
 import dominio.Populacao;
@@ -28,7 +29,7 @@ public class Frame extends javax.swing.JFrame {
         jTabbedPane.setTitleAt(1, "Grafico de Convergência");
 
         //Adiciona as funções no menu
-        funcaoComboBox.addItem(new Funcoes(89, -100, 100, 1500));
+        funcaoComboBox.addItem(new ComboItem("Nickolas-185823-Victor-191068-Pinter", "Value 1"));
     }
 
     @SuppressWarnings("unchecked")
@@ -218,19 +219,17 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_iniciarActionPerformed
 
     private void funcaoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcaoComboBoxActionPerformed
-        if (funcaoComboBox.getSelectedItem() != null) {
-            Algoritimo.setFuncao((Funcoes) funcaoComboBox.getSelectedItem());
-            valorGeracoes.setText(String.valueOf(Algoritimo.getFuncao().getMaximoGeracoes()));
-            jTabbedPane.setSelectedIndex(0);
+        Algoritimo.setFuncao(new Funcoes(89, -100, 100, 1500));
+        valorGeracoes.setText(String.valueOf(Algoritimo.getFuncao().getMaximoGeracoes()));
+        jTabbedPane.setSelectedIndex(0);
 
-            String imageName = "/imagens/F" + Algoritimo.getFuncao().getNumFuncao() + "(x).jpg";
-            
-            Icon icon = new ImageIcon(getClass().getResource(imageName));
-            labelFuncao.setIcon(icon);
+        String imageName = "/imagens/F" + Algoritimo.getFuncao().getNumFuncao() + "(x).jpg";
+        
+        Icon icon = new ImageIcon(getClass().getResource(imageName));
+        labelFuncao.setIcon(icon);
 
-            if (graficoFuncao != null) {
-                montaGraficoFuncao();
-            }
+        if (graficoFuncao != null) {
+            montaGraficoFuncao();
         }
     }//GEN-LAST:event_funcaoComboBoxActionPerformed
 
