@@ -1,7 +1,7 @@
 package dominio;
 
 import java.util.Random;
-import operacao.Algoritimo;
+import operacao.Algoritmo;
 
 /**
  * Classe que define um indivíduo
@@ -10,13 +10,13 @@ import operacao.Algoritimo;
  */
 public class Individuo {
 
-    private double gene[] = new double[Algoritimo.N];
+    private double gene[] = new double[Algoritmo.N];
     private double aptidao;
     private int geracao;
 
     public Individuo(double[] gene) {
         this.gene = gene;
-        aptidao = Algoritimo.getFuncao().resolve(gene);
+        aptidao = Algoritmo.getFuncao().resolve(gene);
     }
 
     public Individuo() {
@@ -25,12 +25,12 @@ public class Individuo {
             double g = geneAleatorio();
             this.gene[i] = g;
         }
-        aptidao = Algoritimo.getFuncao().resolve(gene);
+        aptidao = Algoritmo.getFuncao().resolve(gene);
     }
 
     public void aplicaMutacao(double aptidaoMedia) {
         Random r = new Random();
-        double taxaMutacao = Algoritimo.getTaxaDeMutacao();
+        double taxaMutacao = Algoritmo.getTaxaDeMutacao();
 
         //Melhores indivíduos tem menos chances de sofrerem mutação
         if (aptidao < aptidaoMedia) {
@@ -40,7 +40,7 @@ public class Individuo {
         if (r.nextDouble() <= taxaMutacao) {
             r = new Random();
             this.gene[r.nextInt(gene.length)] = geneAleatorio();
-            aptidao = Algoritimo.getFuncao().resolve(gene);
+            aptidao = Algoritmo.getFuncao().resolve(gene);
         }
     }
 
@@ -55,8 +55,8 @@ public class Individuo {
     private double geneAleatorio() {
         Random r = new Random();
         double v = r.nextDouble();
-        double diff = Algoritimo.getFuncao().getMax() - Algoritimo.getFuncao().getMin();
-        double valor = Algoritimo.getFuncao().getMin() + v * diff;
+        double diff = Algoritmo.getFuncao().getMax() - Algoritmo.getFuncao().getMin();
+        double valor = Algoritmo.getFuncao().getMin() + v * diff;
         return valor;
     }
 

@@ -3,7 +3,7 @@ package ihm;
 import dominio.Individuo;
 import dominio.Populacao;
 import javax.swing.JPanel;
-import operacao.Algoritimo;
+import operacao.Algoritmo;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -56,7 +56,7 @@ public final class GraficoConvergencia {
     }
 
     private void draw() {
-        jFreeChart = ChartFactory.createXYLineChart("Gráfico de Convergência", "Gerações", Algoritimo.getFuncao().toString(), dataset, PlotOrientation.VERTICAL, true, true, false);
+        jFreeChart = ChartFactory.createXYLineChart("Gráfico de Convergência", "Gerações", Algoritmo.getFuncao().toString(), dataset, PlotOrientation.VERTICAL, true, true, false);
         img = new ChartPanel(jFreeChart);
         img.setPreferredSize(new java.awt.Dimension(width, height));
         img.setMinimumSize(new java.awt.Dimension(width, height));

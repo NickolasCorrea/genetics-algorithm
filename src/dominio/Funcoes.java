@@ -24,23 +24,13 @@ public class Funcoes {
 
         this.setMaximoGeracoes(maximoGeracoes);
 
-        if (numFuncao == 8) {
-            minimoDaFuncao = -12569.5;
-        } else {
-            minimoDaFuncao = 0;
-        }
-
+        minimoDaFuncao = 0;
         incrementoGrafico = (Math.abs(min) + max) / 30;
 
     }
 
     public double resolve(double x[]) {
-        double resultado = 0;
-        switch (numFuncao) {
-            case 89:
-                resultado = f89(x);
-                break;
-        }
+        double resultado = f89(x);
         return resultado;
     }
 
@@ -65,8 +55,8 @@ public class Funcoes {
             double A = (xiMinus1 * Math.sin(xi) + Math.sin(xiPlus1));
             double B = Math.pow(xiMinus1, 2) - 2 * xi + 3 * xiPlus1 - Math.cos(xi) + 1;
 
-            sum1 += i * Math.pow(xi, 2);
-            sum2 += 20 * Math.sin(A) * Math.sin(A);
+            sum1 += (i + 1) * Math.pow(xi, 2);
+            sum2 += 20 * (i + 1) * Math.pow(Math.sin(A), 2);
             sum3 += Math.log10(1 + (i + 1) * Math.pow(B, 2));
         }
 

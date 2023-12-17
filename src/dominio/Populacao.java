@@ -52,7 +52,7 @@ public class Populacao {
         return tamPopulacao;
     }
 
-    public Individuo getIndivduo(int pos) {
+    public Individuo getIndividuo(int pos) {
         return individuos[pos];
     }
 

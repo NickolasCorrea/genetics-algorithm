@@ -2,7 +2,7 @@ package ihm;
 
 import java.awt.Color;
 import javax.swing.JPanel;
-import operacao.Algoritimo;
+import operacao.Algoritmo;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -40,7 +40,7 @@ public class GraficoFuncao {
     }
 
     private void draw() {
-        jFreeChart = ChartFactory.createXYLineChart("Gráfico da Função", "x", Algoritimo.getFuncao().toString(), dataset, PlotOrientation.VERTICAL, true, true, false);
+        jFreeChart = ChartFactory.createXYLineChart("Gráfico da Função", "x", Algoritmo.getFuncao().toString(), dataset, PlotOrientation.VERTICAL, true, true, false);
 
         XYItemRenderer renderer = jFreeChart.getXYPlot().getRenderer();
         renderer.setSeriesPaint(0, Color.BLUE);

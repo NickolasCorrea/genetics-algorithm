@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author pcollares
  */
-public class Algoritimo {
+public class Algoritmo {
 
     private static double taxaDeCrossover;
     private static double taxaDeMutacao;
@@ -24,7 +24,7 @@ public class Algoritimo {
         Populacao novaPopulacao = new Populacao(populacao.getTamPopulacao(), false);
 
         if (elitismo) {
-            novaPopulacao.setIndividuo(populacao.getIndivduo(0));
+            novaPopulacao.setIndividuo(populacao.getIndividuo(0));
         }
 
         while (novaPopulacao.getNumIndividuos() < novaPopulacao.getTamPopulacao()) {
@@ -49,7 +49,7 @@ public class Algoritimo {
 
         double aptidaoMedia = novaPopulacao.getMediaAptidao();
         for (int i = 0; i < novaPopulacao.getTamPopulacao(); i++) {
-            novaPopulacao.getIndivduo(i).aplicaMutacao(aptidaoMedia);
+            novaPopulacao.getIndividuo(i).aplicaMutacao(aptidaoMedia);
         }
 
         novaPopulacao.ordenaPopulacao();
@@ -64,21 +64,21 @@ public class Algoritimo {
         r = new Random();
         for (int i = 0; i < n; i++) {
             int pos = r.nextInt(populacao.getTamPopulacao());
-            populacaoIntermediaria.setIndividuo(populacao.getIndivduo(pos));
+            populacaoIntermediaria.setIndividuo(populacao.getIndividuo(pos));
         }
         populacaoIntermediaria.ordenaPopulacao();
 
-        return populacaoIntermediaria.getIndivduo(0);
+        return populacaoIntermediaria.getIndividuo(0);
     }
 
     public static Individuo[] crossover(Individuo pais[]) {
 
         Individuo filhos[] = new Individuo[2];
 
-        double geneFilho1[] = new double[Algoritimo.N];
-        double geneFilho2[] = new double[Algoritimo.N];
+        double geneFilho1[] = new double[Algoritmo.N];
+        double geneFilho2[] = new double[Algoritmo.N];
 
-        for (int i = 0; i < Algoritimo.N; i++) {
+        for (int i = 0; i < Algoritmo.N; i++) {
             geneFilho1[i] = crossoverAritimetico(pais[0].getGene()[i], pais[1].getGene()[i], 1);
             geneFilho2[i] = crossoverAritimetico(pais[0].getGene()[i], pais[1].getGene()[i], 2);
         }
@@ -108,7 +108,7 @@ public class Algoritimo {
     }
 
     public static void setTaxaDeCrossover(double taxaDeCrossover) {
-        Algoritimo.taxaDeCrossover = taxaDeCrossover;
+        Algoritmo.taxaDeCrossover = taxaDeCrossover;
     }
 
     public static double getTaxaDeMutacao() {
@@ -116,7 +116,7 @@ public class Algoritimo {
     }
 
     public static void setTaxaDeMutacao(double taxaDeMutacao) {
-        Algoritimo.taxaDeMutacao = taxaDeMutacao;
+        Algoritmo.taxaDeMutacao = taxaDeMutacao;
     }
 
     public static Funcoes getFuncao() {
@@ -124,7 +124,7 @@ public class Algoritimo {
     }
 
     public static void setFuncao(Funcoes funcao) {
-        Algoritimo.funcao = funcao;
+        Algoritmo.funcao = funcao;
     }
 
     public static Populacao getPopulacaoAtual() {
@@ -132,6 +132,6 @@ public class Algoritimo {
     }
 
     public static void setPopulacaoAtual(Populacao populacaoAtual) {
-        Algoritimo.populacaoAtual = populacaoAtual;
+        Algoritmo.populacaoAtual = populacaoAtual;
     }
 }

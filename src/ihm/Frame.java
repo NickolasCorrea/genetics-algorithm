@@ -1,6 +1,6 @@
 package ihm;
 
-import operacao.Algoritimo;
+import operacao.Algoritmo;
 import dominio.ComboItem;
 import dominio.Funcoes;
 import dominio.Individuo;
@@ -22,7 +22,7 @@ public class Frame extends javax.swing.JFrame {
     private int tamPop;
 
     public Frame() {
-        super("AG - Funções");
+        super("AG - Função Pintér");
         initComponents();
 
         jTabbedPane.setTitleAt(0, "Gráfico da Função");
@@ -215,15 +215,15 @@ public class Frame extends javax.swing.JFrame {
         configuraValores();
         montaGraficoConvergencia();
         jTabbedPane.setSelectedIndex(1);
-        new Thread(new RodaAlgoritimo()).start();
+        new Thread(new RodaAlgoritmo()).start();
     }//GEN-LAST:event_iniciarActionPerformed
 
     private void funcaoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcaoComboBoxActionPerformed
-        Algoritimo.setFuncao(new Funcoes(89, -100, 100, 1500));
-        valorGeracoes.setText(String.valueOf(Algoritimo.getFuncao().getMaximoGeracoes()));
+        Algoritmo.setFuncao(new Funcoes(89, -100, 100, 1500));
+        valorGeracoes.setText(String.valueOf(Algoritmo.getFuncao().getMaximoGeracoes()));
         jTabbedPane.setSelectedIndex(0);
 
-        String imageName = "/imagens/F" + Algoritimo.getFuncao().getNumFuncao() + "(x).jpg";
+        String imageName = "/imagens/F" + Algoritmo.getFuncao().getNumFuncao() + "(x).jpg";
         
         Icon icon = new ImageIcon(getClass().getResource(imageName));
         labelFuncao.setIcon(icon);
@@ -319,16 +319,16 @@ public class Frame extends javax.swing.JFrame {
         mainPanelLayout.setVerticalGroup(vGroup);
         img.setVisible(true);
 
-        for (double x = Algoritimo.getFuncao().getMin(); x < Algoritimo.getFuncao().getMax(); x = x + Algoritimo.getFuncao().getIncrementoGrafico()) {
+        for (double x = Algoritmo.getFuncao().getMin(); x < Algoritmo.getFuncao().getMax(); x = x + Algoritmo.getFuncao().getIncrementoGrafico()) {
             double[] x2 = {x};
-            graficoFuncao.updateFuncao(x, Algoritimo.getFuncao().resolve(x2));
+            graficoFuncao.updateFuncao(x, Algoritmo.getFuncao().resolve(x2));
         }
     }
 
     private void configuraValores() {
-        Algoritimo.setTaxaDeCrossover(Double.parseDouble(valorCrossover.getText()));
-        Algoritimo.setTaxaDeMutacao(Double.parseDouble(valorMutacao.getText()));
-        Algoritimo.getFuncao().setMaximoGeracoes(Integer.parseInt(valorGeracoes.getText()));
+        Algoritmo.setTaxaDeCrossover(Double.parseDouble(valorCrossover.getText()));
+        Algoritmo.setTaxaDeMutacao(Double.parseDouble(valorMutacao.getText()));
+        Algoritmo.getFuncao().setMaximoGeracoes(Integer.parseInt(valorGeracoes.getText()));
 
         tamPop = Integer.parseInt(valorPopulacao.getText());
     }
@@ -338,7 +338,7 @@ public class Frame extends javax.swing.JFrame {
         logArea.setCaretPosition(logArea.getText().length() - 1);
     }
 
-    class RodaAlgoritimo implements Runnable {
+    class RodaAlgoritmo implements Runnable {
 
         @Override
         public void run() {
@@ -346,23 +346,23 @@ public class Frame extends javax.swing.JFrame {
 
             Populacao populacao = new Populacao(tamPop, true);
             populacao.ordenaPopulacao();
-            Individuo melhorIndividuo = populacao.getIndivduo(0);
+            Individuo melhorIndividuo = populacao.getIndividuo(0);
 
             int geracao = 0;
-            while (geracao < Algoritimo.getFuncao().getMaximoGeracoes()) {
+            while (geracao < Algoritmo.getFuncao().getMaximoGeracoes()) {
                 geracao++;
 
-                if (geracao % Algoritimo.getFuncao().getIncremento() == 0) {
-                    graficoConvergencia.update(geracao, populacao, populacao.getIndivduo(populacao.getNumIndividuos() - 1), populacao.getIndivduo(0), Algoritimo.getFuncao().getMinimoDaFuncao());
+                if (geracao % Algoritmo.getFuncao().getIncremento() == 0) {
+                    graficoConvergencia.update(geracao, populacao, populacao.getIndividuo(populacao.getNumIndividuos() - 1), populacao.getIndividuo(0), Algoritmo.getFuncao().getMinimoDaFuncao());
                 }
 
-                populacao = Algoritimo.novaGeracao(populacao, geracao, elitismoCheckBox.isSelected());
-                Algoritimo.setPopulacaoAtual(populacao);
+                populacao = Algoritmo.novaGeracao(populacao, geracao, elitismoCheckBox.isSelected());
+                Algoritmo.setPopulacaoAtual(populacao);
 
-                setLog("Geração " + geracao + "\nMelhor: " + populacao.getIndivduo(0).getAptidao() + "\nMédia: " + populacao.getMediaAptidao() + "\nPior: " + populacao.getIndivduo(populacao.getTamPopulacao() - 1).getAptidao() + "\n");
+                setLog("Geração " + geracao + "\nMelhor: " + populacao.getIndividuo(0).getAptidao() + "\nMédia: " + populacao.getMediaAptidao() + "\nPior: " + populacao.getIndividuo(populacao.getTamPopulacao() - 1).getAptidao() + "\n");
 
-                if (populacao.getIndivduo(0).getAptidao() < melhorIndividuo.getAptidao()) {
-                    melhorIndividuo = populacao.getIndivduo(0);
+                if (populacao.getIndividuo(0).getAptidao() < melhorIndividuo.getAptidao()) {
+                    melhorIndividuo = populacao.getIndividuo(0);
                 }
             }
 
